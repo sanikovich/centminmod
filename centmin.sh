@@ -5,7 +5,7 @@ yum -y upgrade
 # create initial persistent config file to override centmin.sh defaults
 # https://centminmod.com/upgrade.html#persistent
 mkdir -p /etc/centminmod
-wget https://raw.githubusercontent.com/tinof/centmininit/master/custom_config.inc -O /etc/centminmod/custom_config.inc
+wget https://raw.githubusercontent.com/sanikovich/centminmod/main/custom_config.inc -O /etc/centminmod/custom_config.inc
 
 # install centmin mod latest beta with php-fpm 7.4 default
 yum -y update
