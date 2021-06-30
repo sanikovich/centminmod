@@ -39,7 +39,7 @@ crontab cronjoblist
 
 
 # MALDET 
-wget https://raw.githubusercontent.com/tinof/centmininit/master/maldet.sh -O /usr/local/src/centminmod/addons/maldet.sh
+wget https://raw.githubusercontent.com/sanikovich/centminmod/main/maldet.sh -O /usr/local/src/centminmod/addons/maldet.sh
 /usr/local/src/centminmod/addons/maldet.sh
 
 cd /usr/local/src/centminmod/addons/; ./customcurl.sh
