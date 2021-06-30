@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Установка дополнительных приложений и утилит
 yum -y install nano wget yum-utils
 yum -y upgrade
 # create initial persistent config file to override centmin.sh defaults
