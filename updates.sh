@@ -1,20 +1,30 @@
 #!/bin/bash
 ## Install DNF On CentOS 7
-yum -y install dnf subscription-manager mc aspell-en yum-cron rh-perl530
+yum -y install dnf subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 perl-Digest-SHA
 echo 'source scl_source enable rh-perl530' >> ~/.bashrc
+# rpm -Uhv  https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+# Поиск по репо
+# yum --enablerepo=* search aspell\*
 #
 ## Update IPs for CSF
 wget https://raw.githubusercontent.com/sanikovich/centminmod/main/csf.deny;
 mv -f ./csf.deny /etc/csf/csf.deny
+#
 ## Install New Git Version for CentOS 7
-wget https://packages.endpoint.com/endpoint-rpmsign-7.pub
-rpm --import endpoint-rpmsign-7.pub
-rpm -qi gpg-pubkey-703df089 | gpg --with-fingerprint
-yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.9-1.x86_64.rpm
-rm -rf endpoint-rpmsign-7.pub
-echo 'priority=1' >> /etc/yum.repos.d/endpoint.repo
-yum repolist
-yum -y install git
+#
+#  From endpoint Repo
+# wget https://packages.endpoint.com/endpoint-rpmsign-7.pub
+# rpm --import endpoint-rpmsign-7.pub
+# rpm -qi gpg-pubkey-703df089 | gpg --with-fingerprint
+# yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.9-1.x86_64.rpm
+# rm -rf endpoint-rpmsign-7.pub
+# echo 'priority=1' >> /etc/yum.repos.d/endpoint.repo
+#
+#  From wandisco
+yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
+yum --disablerepo=base,updates --enablerepo=rpmforge-extras install git
+
+# yum repolist
 git config --global user.name "Victor Sanikovich"
 git config --global user.email "sanikovich@gmail.com"
 git config --global color.ui true
@@ -52,9 +62,11 @@ yum -y install golang
 # Update VIM
 # sudo curl -L https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo -o /etc/yum.repos.d/hnakamur-vim-epel-7.repo
 yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo
-echo 'protect=0' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
-echo 'priority=1' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
-yum -y Update
+
+
+# echo 'protect=0' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
+# echo 'priority=1' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
+yum -y update
 # Add Setting to Midnight Commander
 
 
@@ -74,16 +86,3 @@ yum -y Update
 # git clone https://github.com/vim/vim.git
 # cd vim
 # curl -L https://copr.fedorainfracloud.org/coprs/mrsipan/vim8/repo/epel-7/mrsipan-vim8-epel-7.repo -o /etc/yum.repos.d/mrsipan-vim8-epel-7.repo
-
-# ## Install Perl
-# wget https://www.cpan.org/src/5.0/perl-5.34.0.tar.gz
-# tar -xzf perl-5.34.0.tar.gz
-# cd perl-5.34.0
-# ./Configure -des
-# make
-# make test
-# make install
-# cd ..
-# rm -rf perl-5.34.0
-# rm -rf perl-5.34.0.tar.gz
-# ##
