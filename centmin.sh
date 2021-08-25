@@ -9,7 +9,8 @@ wget https://raw.githubusercontent.com/sanikovich/centminmod/main/custom_config.
 
 # install centmin mod latest beta with php-fpm 7.4 default
 yum -y update
-curl -O https://raw.githubusercontent.com/centminmod/centminmod/123.09beta01/installer74.sh && chmod 0700 installer74.sh && bash installer74.sh
+#curl -O https://raw.githubusercontent.com/centminmod/centminmod/123.09beta01/installer74.sh && chmod 0700 installer74.sh && bash installer74.sh
+curl -O https://raw.githubusercontent.com/centminmod/centminmod/master/installer80.sh && chmod 0700 installer80.sh && bash installer80.sh
 
 # pre-create Nginx HTTPS site’s dhparam file before hand to speed up subsequent Nginx vhost creation routines. On slow systems, this command will take a few minutes to complete.
 openssl dhparam -out /usr/local/nginx/conf/ssl/dhparam.pem 2048
@@ -38,7 +39,7 @@ echo "23 */12 * * * /usr/local/src/centminmod/tools/csfcf.sh auto >/dev/null 2>&
 crontab cronjoblist
 
 
-# MALDET 
+# MALDET
 wget https://raw.githubusercontent.com/sanikovich/centminmod/main/maldet.sh -O /usr/local/src/centminmod/addons/maldet.sh
 /usr/local/src/centminmod/addons/maldet.sh
 

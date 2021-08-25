@@ -1,10 +1,10 @@
 #!/bin/bash
 ## Install DNF On CentOS 7
-yum -y install dnf subscription-manager mc aspell-en yum-cron rh-perl530 vim
+yum -y install dnf subscription-manager mc aspell-en yum-cron rh-perl530
 echo 'source scl_source enable rh-perl530' >> ~/.bashrc
-# 
+#
 ## Update IPs for CSF
-wget https://raw.githubusercontent.com/sanikovich/centminmod/main/csf.deny; 
+wget https://raw.githubusercontent.com/sanikovich/centminmod/main/csf.deny;
 mv -f ./csf.deny /etc/csf/csf.deny
 ## Install New Git Version for CentOS 7
 wget https://packages.endpoint.com/endpoint-rpmsign-7.pub
@@ -69,7 +69,7 @@ yum -y Update
 
 
 # yum clean all
-## Install Vim 
+## Install Vim
 # cd ~
 # git clone https://github.com/vim/vim.git
 # cd vim
