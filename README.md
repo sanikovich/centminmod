@@ -17,6 +17,10 @@ wget https://raw.githubusercontent.com/sanikovich/centminmod/main/centmin.sh; ch
 wget https://raw.githubusercontent.com/sanikovich/centminmod/main/updates.sh; chmod +x updates.sh; ./updates.sh
 ```
 
+### 4. Update some system utils
+```
+wget https://raw.githubusercontent.com/sanikovich/centminmod/main/install-addons.sh; chmod +x install-addons.sh; ./install-addons.sh
+```
 
 
 # Reference
