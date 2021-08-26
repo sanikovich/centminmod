@@ -206,10 +206,10 @@ echo "   ######   #######  ##     ## ########  #######     ##    #### ########  
     wget https://ftp.gnu.org/gnu/$my_name/$my_file.tar.gz
     tar -xzf $my_file.tar.gz
     cd $my_file/
+    export FORCE_UNSAFE_CONFIGURE=1
     ./configure &
     process_id=$!
     wait $process_id
-    export FORCE_UNSAFE_CONFIGURE=1
     make -j 4 &
     process_id=$!
     wait $process_id
