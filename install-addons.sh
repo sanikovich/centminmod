@@ -21,8 +21,21 @@ if [[ "$ver" == "$my_ver" ]]
 then
     echo -e "[$dt] ${BLINK}Your $my_name version is $ver is allready updated!${NC}"
 else
+
+
+
+echo "  ########     ###     ######  ##     ##    #### ##    ##  ######  ########    ###    ##       ##       "
+echo "  ##     ##   ## ##   ##    ## ##     ##     ##  ###   ## ##    ##    ##      ## ##   ##       ##       "
+echo "  ##     ##  ##   ##  ##       ##     ##     ##  ####  ## ##          ##     ##   ##  ##       ##       "
+echo "  ########  ##     ##  ######  #########     ##  ## ## ##  ######     ##    ##     ## ##       ##       "
+echo "  ##     ## #########       ## ##     ##     ##  ##  ####       ##    ##    ######### ##       ##       "
+echo "  ##     ## ##     ## ##    ## ##     ##     ##  ##   ### ##    ##    ##    ##     ## ##       ##       "
+echo "  ########  ##     ##  ######  ##     ##    #### ##    ##  ######     ##    ##     ## ######## ######## "
+
+
+
     echo "Strating to upgrade $my_name to version $my_ver"
-    read -p "Press enter to continue"
+    # read -p "Press enter to continue"
     wget https://ftp.gnu.org/gnu/$my_name/$my_file.tar.gz
     tar -xzf $my_file.tar.gz
     cd $my_file/
@@ -52,8 +65,20 @@ if [[ "$ver" == "$my_ver" ]]
 then
     echo -e "[$dt] ${BLINK}Your $my_name version is $ver is allready updated!${NC}"
 else
+
+
+
+echo "   ######  ######## ########     #### ##    ##  ######  ########    ###    ##       ##       "
+echo "  ##    ## ##       ##     ##     ##  ###   ## ##    ##    ##      ## ##   ##       ##       "
+echo "  ##       ##       ##     ##     ##  ####  ## ##          ##     ##   ##  ##       ##       "
+echo "   ######  ######   ##     ##     ##  ## ## ##  ######     ##    ##     ## ##       ##       "
+echo "        ## ##       ##     ##     ##  ##  ####       ##    ##    ######### ##       ##       "
+echo "  ##    ## ##       ##     ##     ##  ##   ### ##    ##    ##    ##     ## ##       ##       "
+echo "   ######  ######## ########     #### ##    ##  ######     ##    ##     ## ######## ######## "
+
+
     echo "Strating to upgrade $my_name to version $my_ver"
-    read -p "Press enter to continue"
+    # read -p "Press enter to continue"
     wget https://ftp.gnu.org/gnu/$my_name/$my_file.tar.gz
     tar -xzf $my_file.tar.gz
     cd $my_file/
@@ -82,8 +107,17 @@ if [[ "$ver" == "$my_ver" ]]
 then
     echo -e "[$dt] ${BLINK}Your $my_name version is $ver is allready updated!${NC}"
 else
+
+echo "   ######   ########  ######## ########     #### ##    ##  ######  ########    ###    ##       ##       "
+echo "  ##    ##  ##     ## ##       ##     ##     ##  ###   ## ##    ##    ##      ## ##   ##       ##       "
+echo "  ##        ##     ## ##       ##     ##     ##  ####  ## ##          ##     ##   ##  ##       ##       "
+echo "  ##   #### ########  ######   ########      ##  ## ## ##  ######     ##    ##     ## ##       ##       "
+echo "  ##    ##  ##   ##   ##       ##            ##  ##  ####       ##    ##    ######### ##       ##       "
+echo "  ##    ##  ##    ##  ##       ##            ##  ##   ### ##    ##    ##    ##     ## ##       ##       "
+echo "   ######   ##     ## ######## ##           #### ##    ##  ######     ##    ##     ## ######## ######## "
+
     echo "Strating to upgrade $my_name to version $my_ver"
-    read -p "Press enter to continue"
+    # read -p "Press enter to continue"
     wget https://ftp.gnu.org/gnu/$my_name/$my_file.tar.gz
     tar -xzf $my_file.tar.gz
     cd $my_file/
@@ -113,8 +147,20 @@ if [[ "$ver" == "$my_ver" ]]
 then
     echo -e "[$dt] ${BLINK}Your $my_name version is $ver is allready updated!${NC}"
 else
+
+
+
+echo "     ###    ##      ## ##    ##    #### ##    ##  ######  ########    ###    ##       ##       "
+echo "    ## ##   ##  ##  ## ##   ##      ##  ###   ## ##    ##    ##      ## ##   ##       ##       "
+echo "   ##   ##  ##  ##  ## ##  ##       ##  ####  ## ##          ##     ##   ##  ##       ##       "
+echo "  ##     ## ##  ##  ## #####        ##  ## ## ##  ######     ##    ##     ## ##       ##       "
+echo "  ######### ##  ##  ## ##  ##       ##  ##  ####       ##    ##    ######### ##       ##       "
+echo "  ##     ## ##  ##  ## ##   ##      ##  ##   ### ##    ##    ##    ##     ## ##       ##       "
+echo "  ##     ##  ###  ###  ##    ##    #### ##    ##  ######     ##    ##     ## ######## ######## "
+
+
     echo "Strating to upgrade $my_name to version $my_ver"
-    read -p "Press enter to continue"
+    # read -p "Press enter to continue"
     wget https://ftp.gnu.org/gnu/$my_name/$my_file.tar.gz
     tar -xzf $my_file.tar.gz
     cd $my_file/
@@ -143,14 +189,27 @@ if [[ "$ver" == "$my_ver" ]]
 then
     echo -e "[$dt] ${BLINK}Your $my_name version is $ver is allready updated!${NC}"
 else
+
+
+
+echo "   ######   #######  ########  ######## ##     ## ######## #### ##        ######     #### ##    ##  ######  ########    ###    ##       ##       "
+echo "  ##    ## ##     ## ##     ## ##       ##     ##    ##     ##  ##       ##    ##     ##  ###   ## ##    ##    ##      ## ##   ##       ##       "
+echo "  ##       ##     ## ##     ## ##       ##     ##    ##     ##  ##       ##           ##  ####  ## ##          ##     ##   ##  ##       ##       "
+echo "  ##       ##     ## ########  ######   ##     ##    ##     ##  ##        ######      ##  ## ## ##  ######     ##    ##     ## ##       ##       "
+echo "  ##       ##     ## ##   ##   ##       ##     ##    ##     ##  ##             ##     ##  ##  ####       ##    ##    ######### ##       ##       "
+echo "  ##    ## ##     ## ##    ##  ##       ##     ##    ##     ##  ##       ##    ##     ##  ##   ### ##    ##    ##    ##     ## ##       ##       "
+echo "   ######   #######  ##     ## ########  #######     ##    #### ########  ######     #### ##    ##  ######     ##    ##     ## ######## ######## "
+
+
     echo "Strating to upgrade $my_name to version $my_ver"
-    read -p "Press enter to continue"
+    # read -p "Press enter to continue"
     wget https://ftp.gnu.org/gnu/$my_name/$my_file.tar.gz
     tar -xzf $my_file.tar.gz
     cd $my_file/
     ./configure &
     process_id=$!
     wait $process_id
+    export FORCE_UNSAFE_CONFIGURE=1
     make -j 4 &
     process_id=$!
     wait $process_id
