@@ -221,6 +221,45 @@ echo "   ######   #######  ##     ## ########  #######     ##    #### ########  
 fi
 # end
 #
+# Midnight Commander
+# start
+my_file=mc-4.8.27
+my_name=mc
+my_ver=4.8.27
+ver=`mc --version | grep -Eo 'GNU Midnight Commander [0-9].[0-9]?[0-9].[0-9]?[0-9]' | sed 's/GNU Midnight Commander //g'`
+if [[ "$ver" == "$my_ver" ]]
+then
+    echo -e "[$dt] ${BLINK}Your $my_name version is $ver is allready updated!${NC}"
+else
+
+echo " #     #                                           #####                                                          "
+echo " ##   ## # #####  #    # #  ####  #    # #####    #     #  ####  #    # #    #   ##   #    # #####  ###### #####  "
+echo " # # # # # #    # ##   # # #    # #    #   #      #       #    # ##  ## ##  ##  #  #  ##   # #    # #      #    # "
+echo " #  #  # # #    # # #  # # #      ######   #      #       #    # # ## # # ## # #    # # #  # #    # #####  #    # "
+echo " #     # # #    # #  # # # #  ### #    #   #      #       #    # #    # #    # ###### #  # # #    # #      #####  "
+echo " #     # # #    # #   ## # #    # #    #   #      #     # #    # #    # #    # #    # #   ## #    # #      #   #  "
+echo " #     # # #####  #    # #  ####  #    #   #       #####   ####  #    # #    # #    # #    # #####  ###### #    # "
+
+    echo "Strating to upgrade $my_name to version $my_ver"
+    # read -p "Press enter to continue"
+    wget http://ftp.midnight-commander.org/$my_file.tar.xz
+    tar -xf $my_file.tar.xz
+    cd $my_file/
+    ./configure --prefix=/usr &
+    process_id=$!
+    wait $process_id
+    make -j 4 &
+    process_id=$!
+    wait $process_id
+    make install &
+    process_id=$!
+    wait $process_id
+    cd ..
+    rm -rf $my_file/
+    rm -r $my_file.tar.xz
+fi
+# end
+
 ### Curl ###
 # start
 # my_file=curl-7.78.0

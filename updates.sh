@@ -1,6 +1,15 @@
 #!/bin/bash
+# FTP Setting
+# vim /etc/pure-ftpd/pure-ftpd.conf
+# change
+# TLS                      2
+# to
+# TLS                      1
+# service pure-ftpd restart
+#
+#
 ## Install DNF On CentOS 7
-yum -y install dnf subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 perl-Digest-SHA
+yum -y install dnf subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 slang-devel
 echo 'source scl_source enable rh-perl530' >> ~/.bashrc
 # rpm -Uhv  https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 # Поиск по репо
@@ -11,33 +20,39 @@ wget https://raw.githubusercontent.com/sanikovich/centminmod/main/csf.deny;
 mv -f ./csf.deny /etc/csf/csf.deny
 #
 ## Install New Git Version for CentOS 7
-#
-#  From endpoint Repo
-# wget https://packages.endpoint.com/endpoint-rpmsign-7.pub
-# rpm --import endpoint-rpmsign-7.pub
-# rpm -qi gpg-pubkey-703df089 | gpg --with-fingerprint
-# yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.9-1.x86_64.rpm
-# rm -rf endpoint-rpmsign-7.pub
-# echo 'priority=1' >> /etc/yum.repos.d/endpoint.repo
-#
-#  From wandisco
+### Git Install  From wandisco ###
 yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
+yum -y install perl-Digest-SHA
 yum --disablerepo=base,updates --enablerepo=rpmforge-extras install git
-
-# yum repolist
 git config --global user.name "Victor Sanikovich"
 git config --global user.email "sanikovich@gmail.com"
 git config --global color.ui true
 git config --global core.editor vim
-## Installing snap on CentOS
+### Installing snap on CentOS ###
 yum install -y snapd
 systemctl enable --now snapd.socket
 ln -s /var/lib/snapd/snap /snap
 exec bash
 sleep 15
 snap install snapcraft --classic
-# Gohugo Install
+#
+### Perlbrew Install ###
+wget -O - https://install.perlbrew.pl | bash
+cpan App::perlbrew
+##
+### Gohugo Install ###
 snap install hugo --channel=extended/stable
+#
+## Install Golang ###
+rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
+curl -s https://mirror.go-repo.io/centos/go-repo.repo | tee /etc/yum.repos.d/go-repo.repo
+echo 'protect=0' >> /etc/yum.repos.d/go-repo.repo
+echo 'priority=1' >> /etc/yum.repos.d/go-repo.repo
+yum -y install golang
+#
+
+
+
 # Rakudo
 # https://cloudsmith.io/~nxadm-pkgs/repos/rakudo-pkg/setup/#formats-rpm
 # https://awesomeopensource.com/project/nxadm/rakudo-pkg
@@ -53,33 +68,27 @@ rakubrew self-upgrade
 rakubrew build-zef
 echo 'PATH=$PATH:/opt/rakudo-pkg/share/perl6/site/bin' >> ~/.bashrc
 source ~/.bashrc
-## Install Golang
-rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
-curl -s https://mirror.go-repo.io/centos/go-repo.repo | tee /etc/yum.repos.d/go-repo.repo
-echo 'protect=0' >> /etc/yum.repos.d/go-repo.repo
-echo 'priority=1' >> /etc/yum.repos.d/go-repo.repo
-yum -y install golang
 # Update VIM
 # sudo curl -L https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo -o /etc/yum.repos.d/hnakamur-vim-epel-7.repo
 yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo
-
-
 # echo 'protect=0' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
 # echo 'priority=1' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
 yum -y update
 # Add Setting to Midnight Commander
-
-
+#  From endpoint Repo
+# wget https://packages.endpoint.com/endpoint-rpmsign-7.pub
+# rpm --import endpoint-rpmsign-7.pub
+# rpm -qi gpg-pubkey-703df089 | gpg --with-fingerprint
+# yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.9-1.x86_64.rpm
+# rm -rf endpoint-rpmsign-7.pub
+# echo 'priority=1' >> /etc/yum.repos.d/endpoint.repo
+#
 # PHP
 # https://blog.remirepo.net/post/2021/07/01/PHP-version-7.3.29-7.4.21-and-8.0.8
-
-
-
-
+#
 # Vim for Raku https://github.com/Raku/vim-raku
 # https://github.com/Raku/vim-raku
-
-
+#
 # yum clean all
 ## Install Vim
 # cd ~
