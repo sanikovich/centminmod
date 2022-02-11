@@ -20,7 +20,7 @@ RPMSAVE_PATH="$DIR_TMP"
 GCC_YUMINSTALL='n'
 
 # SVN GCC 7 or 8 or 9
-GCCSVN_VER='10'
+GCCSVN_VER='11'
 GCC_SVN='y'
 GCC_VER='11'
 GCC_PREFIX="/opt/gcc-${GCC_VER}"
@@ -36,7 +36,7 @@ GCC_GOLD='y'
 # https://gcc.gnu.org/install/build.html
 GCC_PGO='n'
 BOOTCFLAGS='y'
-BINUTILS_VER='2.33.1'
+BINUTILS_VER='2.37'
 
 # GCC Downloads
 GMP_FILE='gmp-6.1.2.tar.bz2'
@@ -165,7 +165,7 @@ die() {
 }
 
 tidyup() {
-    # logs older than 5 days will be gzip compressed to save space 
+    # logs older than 5 days will be gzip compressed to save space
     if [ -d /root/centminlogs ]; then
         # find /root/centminlogs -type f -mtime +3 \( -name 'tools-binutils-install_*.log"' -o -name 'tools-gcc-install*.log' \) -exec ls -lah {} \;
         find /root/centminlogs -type f -mtime +3 \( -name 'tools-binutils-install_*.log"' -o -name 'tools-gcc-install*.log' \) -exec gzip -9 {} \;
@@ -252,10 +252,10 @@ fpm_install() {
         cecho "Install FPM Start..." $boldgreen
         echo "*************************************************"
         echo
-        
+
             fpmpkgs='ruby-devel gcc make rpm-build rubygems'
-            for i in ${fpmpkgs[@]}; do 
-                echo $i; 
+            for i in ${fpmpkgs[@]}; do
+                echo $i;
                 if [[ "$(rpm --quiet -ql $i; echo $?)" -ne '0' ]]; then
                     yum -y install $i
                 fi
@@ -389,7 +389,7 @@ binutils_install() {
         rpm -qp --provides "${DIR_TMP}/binutils-gcc${GCCSVN_VER}-${BINUTILS_VER}-1.${DISTTAG}.x86_64.rpm"
         echo "-------------------------------------------------------------------------------------"
         echo
-        
+
         echo
         echo "-------------------------------------------------------------------------------------"
         echo "rpm -qp --requires \"${DIR_TMP}/binutils-gcc${GCCSVN_VER}-${BINUTILS_VER}-1.${DISTTAG}.x86_64.rpm\""
@@ -476,8 +476,8 @@ install_gcc() {
     echo
 
     pkgs='texinfo flex-devel gmp-devel mpfr-devel libmpc-devel bison-devel gcc-gnat'
-    for i in ${pkgs[@]}; do 
-     echo $i; 
+    for i in ${pkgs[@]}; do
+     echo $i;
      if [[ "$(rpm --quiet -ql $i; echo $?)" -ne '0' ]]; then
         yum -y install $i
      fi
@@ -705,7 +705,7 @@ EOF
         rpm -qp --provides "${DIR_TMP}/gcc${GCCSVN_VER}${PGOTAG}-${GCCFPM_VER}-1.${DISTTAG}.x86_64.rpm"
         echo "-------------------------------------------------------------------------------------"
         echo
-        
+
         echo
         echo "-------------------------------------------------------------------------------------"
         echo "rpm -qp --requires \"${DIR_TMP}/gcc${GCCSVN_VER}${PGOTAG}-${GCCFPM_VER}-1.${DISTTAG}.x86_64.rpm\""
@@ -755,11 +755,11 @@ EOF
         echo
         echo "${GCC_PREFIX}/bin/ld -v"
         "${GCC_PREFIX}/bin/ld" -v
-    
+
         echo
         echo "${GCC_PREFIX}/bin/ld.gold -v"
         "${GCC_PREFIX}/bin/ld.gold" -v
-    
+
         echo
         echo "${GCC_PREFIX}/bin/ld.bfd -v"
         "${GCC_PREFIX}/bin/ld.bfd" -v
@@ -767,11 +767,11 @@ EOF
         echo
         echo "${GCC_PREFIX}/bin/gcc --version"
         "${GCC_PREFIX}/bin/gcc" --version
-    
+
         echo
         echo "${GCC_PREFIX}/bin/g++ --version"
         "${GCC_PREFIX}/bin/g++" --version
-    
+
         echo
         echo "${GCC_PREFIX}/bin/gcc -v"
         "${GCC_PREFIX}/bin/gcc" -v
