@@ -23,7 +23,7 @@ wget https://raw.githubusercontent.com/sanikovich/centminmod/main/install-addons
 ```
 
 
-# Reference
+## Reference
 1. [Tino Fotiou @tinof](https://github.com/tinof/centmininit)
 1. [Centminmod Official Forum](https://community.centminmod.com/threads/discussion-how-do-you-initially-install-setup-your-centmin-mod-server.14736/page-3)
 1. [Centminmod Github Page](https://github.com/centminmod/centminmod/blob/master/centmin.sh)

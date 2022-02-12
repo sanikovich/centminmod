@@ -13,7 +13,7 @@ cd ~
 #
 # Bash 5.1.8
 # start
-my_file=bash-5.1.8
+my_file=bash-5.1.16
 my_name=bash
 my_ver=5.1.8
 ver=`bash --version | grep -Eo 'version [0-9].[0-9].[0-9]' | sed 's/version //g'`
@@ -99,7 +99,7 @@ fi
 #
 # Grep
 # start
-my_file=grep-3.6
+my_file=grep-3.7
 my_name=grep
 my_ver=3.6
 ver=`grep --version | grep -Eo 'grep \(GNU grep\) [0-9].[0-9]?[0-9]' | sed 's/grep (GNU grep) //g'`
@@ -139,7 +139,7 @@ fi
 #
 # gawk
 # start
-my_file=gawk-5.1.0
+my_file=gawk-5.1.1
 my_name=gawk
 my_ver=5.1.0
 ver=`gawk --version | grep -Eo 'GNU Awk [0-9].[0-9]?[0-9].[0-9]?[0-9]' | sed 's/GNU Awk //g'`
@@ -181,7 +181,7 @@ fi
 #
 # coreutils
 # start
-my_file=coreutils-8.32
+my_file=coreutils-9.0
 my_name=coreutils
 my_ver=8.32
 ver=`split --version | grep -Eo 'split \(GNU coreutils\) [0-9].[0-9]?[0-9]' | sed 's/split (GNU coreutils) //g'`

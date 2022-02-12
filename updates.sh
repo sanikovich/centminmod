@@ -9,7 +9,7 @@
 #
 #
 ## Install DNF On CentOS 7
-yum -y install dnf subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 slang-devel
+yum -y install dnf vim subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 slang-devel
 echo 'source scl_source enable rh-perl530' >> ~/.bashrc
 # rpm -Uhv  https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 # Поиск по репо
@@ -21,9 +21,9 @@ mv -f ./csf.deny /etc/csf/csf.deny
 #
 ## Install New Git Version for CentOS 7
 ### Git Install  From wandisco ###
-yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
+yum install -y http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
 yum -y install perl-Digest-SHA
-yum --disablerepo=base,updates --enablerepo=rpmforge-extras install git
+yum -y --disablerepo=base,updates --enablerepo=rpmforge-extras install git
 git config --global user.name "Victor Sanikovich"
 git config --global user.email "sanikovich@gmail.com"
 git config --global color.ui true
@@ -32,16 +32,14 @@ git config --global core.editor vim
 yum install -y snapd
 systemctl enable --now snapd.socket
 ln -s /var/lib/snapd/snap /snap
-exec bash
-sleep 15
+systemctl restart snapd
 snap install snapcraft --classic
-#
-### Perlbrew Install ###
-wget -O - https://install.perlbrew.pl | bash
-cpan App::perlbrew
-##
 ### Gohugo Install ###
 snap install hugo --channel=extended/stable
+### Perlbrew Install ###
+# wget -O - https://install.perlbrew.pl | bash
+# cpan App::perlbrew
+##
 #
 ## Install Golang ###
 rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
@@ -50,7 +48,10 @@ echo 'protect=0' >> /etc/yum.repos.d/go-repo.repo
 echo 'priority=1' >> /etc/yum.repos.d/go-repo.repo
 yum -y install golang
 #
-
+## Install PowerShell
+# Register the Microsoft RedHat repository
+curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+yum install -y powershell
 
 
 # Rakudo
