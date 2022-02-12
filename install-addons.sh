@@ -15,7 +15,7 @@ cd ~
 # start
 my_file=bash-5.1.16
 my_name=bash
-my_ver=5.1.8
+my_ver=5.1.16
 ver=`bash --version | grep -Eo 'version [0-9].[0-9].[0-9]' | sed 's/version //g'`
 if [[ "$ver" == "$my_ver" ]]
 then
@@ -101,7 +101,7 @@ fi
 # start
 my_file=grep-3.7
 my_name=grep
-my_ver=3.6
+my_ver=3.7
 ver=`grep --version | grep -Eo 'grep \(GNU grep\) [0-9].[0-9]?[0-9]' | sed 's/grep (GNU grep) //g'`
 if [[ "$ver" == "$my_ver" ]]
 then
@@ -141,7 +141,7 @@ fi
 # start
 my_file=gawk-5.1.1
 my_name=gawk
-my_ver=5.1.0
+my_ver=5.1.1
 ver=`gawk --version | grep -Eo 'GNU Awk [0-9].[0-9]?[0-9].[0-9]?[0-9]' | sed 's/GNU Awk //g'`
 if [[ "$ver" == "$my_ver" ]]
 then
@@ -183,7 +183,7 @@ fi
 # start
 my_file=coreutils-9.0
 my_name=coreutils
-my_ver=8.32
+my_ver=9.0
 ver=`split --version | grep -Eo 'split \(GNU coreutils\) [0-9].[0-9]?[0-9]' | sed 's/split (GNU coreutils) //g'`
 if [[ "$ver" == "$my_ver" ]]
 then
