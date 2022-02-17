@@ -9,7 +9,7 @@
 #
 #
 ## Install DNF On CentOS 7
-yum -y install p7zip dnf subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 slang-devel
+yum -y install vim-enhanced p7zip subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 slang-devel
 echo 'source scl_source enable rh-perl530' >> ~/.bashrc
 # rpm -Uhv  https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 # Поиск по репо
@@ -36,7 +36,7 @@ ln -s /var/lib/snapd/snap /snap
 systemctl restart snapd
 sleep 10s
 snap install snapcraft --classic
-sleep 10s
+sleep 15s
 ### Gohugo Install ###
 snap install hugo --channel=extended/stable
 ### Perlbrew Install ###
@@ -54,7 +54,7 @@ yum -y install golang
 ## Install PowerShell
 # Register the Microsoft RedHat repository
 curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
-yum install -y powershell vim
+yum install -y powershell
 
 
 # Rakudo

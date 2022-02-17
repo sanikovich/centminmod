@@ -113,7 +113,7 @@ NGINX_MODSECURITY='y'          # modsecurity module support https://github.com/S
 
 NGINX_STAPLE_CACHE_OVERRIDE='y' # Включение отменяет время обновления кэша Nginx OCSP сшивки 3600 секунд
 NGINX_STAPLE_CACHE_TTL='86400'  # Время обновления кэша Nginx OCSP сшивки в секундах override default 3600
-# Countless Servers Are Vulnerable to Apache Log4j Zero-Day Exploit (Log4Shell) 
+# Countless Servers Are Vulnerable to Apache Log4j Zero-Day Exploit (Log4Shell)
 # https://community.centminmod.com/threads/countless-servers-are-vulnerable-to-apache-log4j-zero-day-exploit-log4shell.22254/page-4#post-91062
 NGINX_NJS='y'                # nginScript https://www.nginx.com/blog/launching-nginscript-and-looking-ahead/
 NGXDYNAMIC_NJS='y'
@@ -138,7 +138,6 @@ CACHE_ENABLER_LEGACY_CACHE='y'
 # - If you want to set CC_SRC = "2" to use db-ip database in CSF Firewall /etc/csf/csf.conf,
 # just set MM_CSF_SRC='n' no persistent config file /etc/centminmod/custom_config.inc and run and exit centmin.sh once
 # - Add a check so that if CC_SRC = "1" already set, no need to run routine.
-CC_SRC = '1'
 MM_LICENSE_KEY='hLYUAcgJtgBg0TZ0'
 MM_CSF_SRC='y'
 ###############################################################
