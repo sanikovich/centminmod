@@ -31,9 +31,12 @@ git config --global core.editor vim
 ### Installing snap on CentOS ###
 yum install -y snapd
 systemctl enable --now snapd.socket
+sleep 10s
 ln -s /var/lib/snapd/snap /snap
 systemctl restart snapd
+sleep 10s
 snap install snapcraft --classic
+sleep 10s
 ### Gohugo Install ###
 snap install hugo --channel=extended/stable
 ### Perlbrew Install ###
@@ -57,24 +60,24 @@ yum install -y powershell
 # Rakudo
 # https://cloudsmith.io/~nxadm-pkgs/repos/rakudo-pkg/setup/#formats-rpm
 # https://awesomeopensource.com/project/nxadm/rakudo-pkg
-curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.rpm.sh' | bash
-yum -y install rakudo-pkg
-exec bash
-# # Install RakuBrew https://rakubrew.org/?platform=linux
-curl https://rakubrew.org/install-on-perl.sh | bash
-echo 'eval "$(/usr/bin/rakubrew init Bash)"' >> ~/.bashrc
-exec bash
-rakubrew self-upgrade
-#  Zef Raku / Perl6 Module Management mhttps://github.com/ugexe/zef
-rakubrew build-zef
-echo 'PATH=$PATH:/opt/rakudo-pkg/share/perl6/site/bin' >> ~/.bashrc
-source ~/.bashrc
+# curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.rpm.sh' | bash
+# yum -y install rakudo-pkg
+# exec bash
+# # # Install RakuBrew https://rakubrew.org/?platform=linux
+# curl https://rakubrew.org/install-on-perl.sh | bash
+# echo 'eval "$(/usr/bin/rakubrew init Bash)"' >> ~/.bashrc
+# exec bash
+# rakubrew self-upgrade
+# #  Zef Raku / Perl6 Module Management mhttps://github.com/ugexe/zef
+# rakubrew build-zef
+# echo 'PATH=$PATH:/opt/rakudo-pkg/share/perl6/site/bin' >> ~/.bashrc
+# source ~/.bashrc
+
 # Update VIM
 # sudo curl -L https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo -o /etc/yum.repos.d/hnakamur-vim-epel-7.repo
-yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo
+# yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo
 # echo 'protect=0' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
 # echo 'priority=1' >> /etc/yum.repos.d/hnakamur-vim-epel-7.repo
-yum -y update
 # Add Setting to Midnight Commander
 #  From endpoint Repo
 # wget https://packages.endpoint.com/endpoint-rpmsign-7.pub
@@ -96,3 +99,4 @@ yum -y update
 # git clone https://github.com/vim/vim.git
 # cd vim
 # curl -L https://copr.fedorainfracloud.org/coprs/mrsipan/vim8/repo/epel-7/mrsipan-vim8-epel-7.repo -o /etc/yum.repos.d/mrsipan-vim8-epel-7.repo
+yum -y update
