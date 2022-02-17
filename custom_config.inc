@@ -75,7 +75,7 @@ MARCH_TARGETNATIVE_ALWAYS='y'   # force native compiler to override smarter vps 
 # используйте на свой страх и риск, так как это может сломать систему
 # информация на https://mirror.city-fan.org/ftp/contrib/sysutils/Mirroring/
 CUSTOM_CURLRPM='y'
-CUSTOM_CURLRPMVER='7.77.0'       # custom curl/libcurl version
+CUSTOM_CURLRPMVER='7.81.0'       # пользовательская версия curl/libcurl
 
 
 
@@ -131,6 +131,22 @@ CACHE_ENABLER_LEGACY_CACHE='y'
 # You can override this API key with your own Maxmind
 # account API key by setting MM_LICENSE_KEY variable
 # in persistent config file /etc/centminmod/custom_config.inc
+# - Add MM_CSF_SRC='y' default variable to force CSF Firewall to use CC_SRC = "1"
+# for maxmind geolite2 database source instead of db-ip database.
+# Related to https://community.centminmod.com/threads/update-csf-firewall-maxmind-geolite2-routine-in-123-09beta01.19046/
+# - If you want to set CC_SRC = "2" to use db-ip database in CSF Firewall /etc/csf/csf.conf,
+# just set MM_CSF_SRC='n' no persistent config file /etc/centminmod/custom_config.inc and run and exit centmin.sh once
+# - Add a check so that if CC_SRC = "1" already set, no need to run routine.
+CC_SRC = '1'
 MM_LICENSE_KEY='hLYUAcgJtgBg0TZ0 '
 MM_CSF_SRC='y'
 ###############################################################
+# When set to ='y'will disable those listed installed services
+# by default. The service is still installed but disabled
+# by default and can be re-enabled with commands:
+# service servicename start; chkconfig servicename on
+# From https://centminmod.com/faq.html Question #25
+MEMCACHED_INSTALL='y'         # Install Memcached
+MEMCACHED_DISABLED='n'        # when set to ='y' Memcached server disabled by default via chkconfig off
+NSD_INSTALL='y'
+NSD_DISABLED='n'              # when set to ='y'NSD disabled by default with chkconfig off
