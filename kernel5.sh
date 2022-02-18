@@ -1,4 +1,5 @@
 #!/bin/bash
+yum -y install deltarpm
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 yum -y install https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
 yum -y --enablerepo=elrepo-kernel install kernel-ml
