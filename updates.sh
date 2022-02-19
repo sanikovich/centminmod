@@ -11,6 +11,12 @@
 ## Install DNF On CentOS 7
 yum -y install vim-enhanced p7zip p7zip-plugins subscription-manager mc aspell-en yum-cron gpm-libs rh-perl530 slang-devel
 echo 'source scl_source enable rh-perl530' >> ~/.bashrc
+# UnRar
+wget https://forensics.cert.org/cert-forensics-tools-release-el7.rpm
+rpm -Uvh cert-forensics-tools-release*rpm
+rm -rf cert-forensics-tools-release-el7.rpm
+yum -y --enablerepo=forensics install unrar
+
 # rpm -Uhv  https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 # Поиск по репо
 # yum --enablerepo=* search aspell\*
