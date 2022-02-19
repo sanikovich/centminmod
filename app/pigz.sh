@@ -1,21 +1,16 @@
 
 # pigz 2.7
+#  https://ostechnix.com/pigz-compress-and-decompress-files-in-parallel-in-linux/
 # start
 my_file=pigz
 # read -p "Press enter to continue"
 wget https://www.zlib.net/pigz/$my_file.tar.gz
 tar -xvf $my_file.tar.gz
 cd $my_file/
-./configure &
-process_id=$!
-wait $process_id
-make -j 4 &
-process_id=$!
-wait $process_id
-make install &
-process_id=$!
-wait $process_id
+make
+cp pigz /usr/local/bin/
+cp unpigz /usr/local/bin/
 cd ..
 rm -rf $my_file/
-rm -r $my_file.tar.xz
+rm -r $my_file.tar.gz
 # end
