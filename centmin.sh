@@ -1,4 +1,6 @@
 #!/bin/bash
+# Установка часового пояса
+timedatectl set-timezone Europe/Moscow
 # Установка дополнительных приложений и утилит
 yum -y install nano yum-utils
 yum -y upgrade
