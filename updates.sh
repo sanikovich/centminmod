@@ -61,7 +61,14 @@ yum -y install golang
 # Register the Microsoft RedHat repository
 curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
 yum install -y powershell
-
+# ## Install Microsoft DotNet Core 6.0
+# sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
+# ## Install the SDK [Installed size: 467 M]
+# yum -y install dotnet-sdk-6.0
+# ## Install the runtime [Installed size: 87 M]
+# yum -y install aspnetcore-runtime-6.0
+# ## Install the runtime without ASP.NET [Installed size: 67 M]
+# yum -y install dotnet-runtime-6.0
 
 # Rakudo
 # https://cloudsmith.io/~nxadm-pkgs/repos/rakudo-pkg/setup/#formats-rpm
