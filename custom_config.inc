@@ -77,6 +77,8 @@ NGINXOPENSSL_NOFATLTO_OBJECTS='n' # enable -fno-fat-lto-objects flag for nginx O
 NGINXCOMPILE_FORMATSEC='y'    # whether or not nginx is compiled with -Wformat -Werror=format-security flags
 NGX_LDMOLD='n'                # optional mold linker https://github.com/rui314/mold
 MOLD_VERSION='1.2.1'          # mold linker rpm version
+## FOR PHP 7.4+
+FPM_WAKEUP_PATCH='y'
 
 # Nginx Dynamic Module Switches
 NGXDYNAMIC_MANUALOVERRIDE='n' # set to 'y' if you want to manually drop in nginx dynamic modules into /usr/local/nginx/modules
@@ -155,7 +157,7 @@ NGINX_ZLIBNG='n'             # 64bit OS only for Nginx compiled against zlib-ng 
 NGINX_TLS_FINGERPRINT='n'    # JA3 fingerprint module https://github.com/centminmod/nginx-ssl-fingerprint
 NGINX_MODSECURITY='y'        # modsecurity module support https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#Installation_for_NGINX
 NGINX_MODSECURITY_JSONLOGS='n' # enable to switch to JSON log format, to switch back manually edit /usr/local/nginx/modsec/modsecurity.conf
-NGINX_MODSECURITY_MAXMIND='y' # modsecurity built with libmaxminddb is failing to compile so disable it in favour of GeoIP legacy
+# NGINX_MODSECURITY_MAXMIND='y' # modsecurity built with libmaxminddb is failing to compile so disable it in favour of GeoIP legacy
 NGINX_REALIP='y'             # http://nginx.org/en/docs/http/ngx_http_realip_module.html
 NGINX_RDNS='n'               # https://github.com/flant/nginx-http-rdns
 #
@@ -525,7 +527,7 @@ SKIP_CHECKIPVSIX='n'
 SKIP_LIBC_FIX='n'
 ###############################################################
 
-##For Linux Kernel  > 5.1.x
+##For Linux Kernel  > 5.x
 NGINX_IOURING_PATCH_BETA='y'    # включение функциональности потоков aio, только если обновлено ядро до 5.1+
 #####################################################
 # WordPress
