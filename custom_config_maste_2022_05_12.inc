@@ -7,15 +7,15 @@
 # Persistent config outlined at https://centminmod.com/upgrade.html#persistent
 # Location:  /etc/centminmod/custom_config.inc
 
-EMAIL='x2600@mail.ru'           # Адрес электронной почты для уведомления сервера введите только 1 адрес
-PUSHOVER_EMAIL='quwtcqcy5y@pomail.net' # Signup pushover.net push email notifications to mobile & tablets
+EMAIL=''          # Server notification email address enter only 1 address
+PUSHOVER_EMAIL='' # Signup pushover.net push email notifications to mobile & tablets
 
 CMGIT='https://github.com/centminmod/centminmod.git'
 AUTO_GITUPDATE='n'
 MENUEXIT_ALWAYS_YUMCHECK='y'  # also do yum check on centmin.sh exit
 
-ENABLEMOTD_CSFMSG='n'           # Отображать motd баннер и  сообщения фаервола csf
-ENABLEMOTD_LINKSMSG='n'         # Отображать motd  ссылок на centminmod.com
+ENABLEMOTD_CSFMSG='y'         # motd banner csf message alert disaply
+ENABLEMOTD_LINKSMSG='y'       # motd centminmod.com links bookmark alert display
 
 #####################################################
 TIME_NGINX='n'
@@ -32,17 +32,13 @@ TIME_REDIS='n'
 # override defaults
 # disable system IPv6 support
 # https://wiki.centos.org/FAQ/CentOS7#head-8984faf811faccca74c7bcdd74de7467f2fcd8ee
-DISABLE_IPVSIX='y'              # отключить поддержку IPv6 в системе
+DISABLE_IPVSIX='n'
 FORCE_IPVFOUR='y' # curl/wget commands through script force IPv4
-
-# экспериментальное использование подпрограмм для загрузки некоторых
-# tarballs параллельно для ускорения начальной установки
-PARALLEL_MODE='y'
 
 # Clang & GCC Compilers
 MARCH_TARGETNATIVE='y'        # for intel 64bit only set march=native, if no set to x86-64
-MARCH_TARGETNATIVE_ALWAYS='y' # force native compiler to override smarter vps detection routine
-CLANG='n'                     # Nginx and LibreSSL
+MARCH_TARGETNATIVE_ALWAYS='n' # force native compiler to override smarter vps detection routine
+CLANG='y'                     # Nginx and LibreSSL
 CLANG_FOUR='n'                # Clang 4.0+ optional support https://community.centminmod.com/threads/13729/
 CLANG_FIVE='n'                # Clang 5.0+ optional support https://community.centminmod.com/threads/13729/
 CLANG_SIX='n'                 # Clang 6.0+ optional support https://community.centminmod.com/threads/13729/
@@ -51,7 +47,7 @@ CLANG_APC='n'                 # APC Cache
 CLANG_MEMCACHED='n'           # Memcached menu option 10 routine
 GCCINTEL_PHP='y'              # enable PHP-FPM GCC compiler with Intel cpu optimizations
 PHP_PGO='n'                   # Profile Guided Optimization https://software.intel.com/en-us/blogs/2015/10/09/pgo-let-it-go-php
-PHP_PGO_ALWAYS='n'         # переопределение для PHP_PGO для серверов с 1 вычислительным процессором и потоком
+PHP_PGO_ALWAYS='n'            # override for PHP_PGO enable for 1 cpu thread servers too
 PHP_PGO_TRAINRUNS='10'        # number of runs done during PGO PHP 7 training runs
 PHP_PGO_APPEND_LABEL='y'          # appen PGO label to PHP binaries built with Profile Guided Optimizations
 PHP_PGO_CENTOSSIX='n'         # CentOS 6 may need GCC >4.4.7 fpr PGO so use lastest devtoolset
@@ -59,12 +55,9 @@ DEVTOOLSET_PHP='n'            # use devtoolset GCC for GCCINTEL_PHP='y'
 DEVTOOLSETSIX='n'             # Enable or disable devtoolset-6 GCC 6.2 support instead of lastest devtoolset support
 DEVTOOLSETSEVEN='n'           # Enable or disable devtoolset-7 GCC 7.1 support instead of devtoolset-6 GCC 6.2 support
 DEVTOOLSETEIGHT='n'           # source compiled GCC 8 from latest snapshot builds
-DEVTOOLSETNINE='n'          # Включаем devtoolset-9 GCC 9.1
-DEVTOOLSETTEN='n'           # Включаем devtoolset-10 GCC 10
-DEVTOOLSETELEVEN='y'        # Включаем devtoolset-11 GCC 11
-NGINX_DEVTOOLSETGCC='y'     # Используйте последнюю версию devtoolset даже для компиляции nginx в CentOS 7
-GENERAL_DEVTOOLSETGCC='y'   # Используйте последний devtoolset везде, где это возможно
-CRYPTO_DEVTOOLSETGCC='y'    # Используйте последний devtoolset для компиляции libressl или openssl
+NGINX_DEVTOOLSETGCC='n'       # Use lastest devtoolset even for CentOS 7 nginx compiles
+GENERAL_DEVTOOLSETGCC='n'     # Use lastest devtoolset whereever possible/coded
+CRYPTO_DEVTOOLSETGCC='y'      # Use lastest devtoolset for libressl or openssl compiles
 NGX_GSPLITDWARF='y'           # for Nginx compile https://community.centminmod.com/posts/44072/
 PHP_GSPLITDWARF='y'           # for PHP compile https://community.centminmod.com/posts/44072/
 PHP_LTO='n'                   # enable -flto compiler for GCC 4.8.5+ PHP-FPM compiles currently not working with PHP 7.x
@@ -80,7 +73,7 @@ MOLD_VERSION='1.2.1'          # mold linker rpm version
 
 # Nginx Dynamic Module Switches
 NGXDYNAMIC_MANUALOVERRIDE='n' # set to 'y' if you want to manually drop in nginx dynamic modules into /usr/local/nginx/modules
-NGXDYNAMIC_NJS='y'  # Countless Servers Are Vulnerable to Apache Log4j Zero-Day Exploit (Log4Shell)
+NGXDYNAMIC_NJS='n'
 NGXDYNAMIC_XSLT='n'
 NGXDYNAMIC_PERL='n'
 NGXDYNAMIC_IMAGEFILTER='y'
@@ -98,9 +91,6 @@ NGXDYNAMIC_DEVELKIT='y'     #
 NGXDYNAMIC_MEMC='n'
 NGXDYNAMIC_REDISTWO='n'
 NGXDYNAMIC_NGXPAGESPEED='n'
-# автоматическое включение модуля brotli nginx при наличии Intel Skylake или более новых процессоров
-# более новые процессоры позволяют быстрее обслуживать сжатые файлы nginx с помощью brotli
-# https://community.centminmod.com/posts/70527/
 NGXDYNAMIC_BROTLI='y'
 NGXDYNAMIC_FANCYINDEX='y'
 NGXDYNAMIC_HIDELENGTH='y'
@@ -110,26 +100,26 @@ NGXDYNAMIC_VHOSTSTATS='n'
 # Maintenance Mode (will run maintenance mode during these upgrades)
 # set = y to put nginx, php and mariadb major version updates into 503 
 # maintenance mode https://community.centminmod.com/posts/26485/
-NGINX_UPDATEMAINTENANCE='y'
-PHP_UPDATEMAINTENANCE='y'
-MARIADB_UPDATEMAINTENANCE='y'
+NGINX_UPDATEMAINTENANCE='n'
+PHP_UPDATEMAINTENANCE='n'
+MARIADB_UPDATEMAINTENANCE='n'
 
 # Nginx
 NGINXCOMPILE_PIE='n'         # build nginx with Position-independent code (PIC) / Position-indendendent executables (PIEs)
 NGINX_VERSION='1.21.4'      # Use this version of Nginx
 NGINX_VHOSTSSL='y'           # enable centmin.sh menu 2 prompt to create self signed SSL vhost 2nd vhost conf
 NGINXBACKUP='y'
-NGINX_STAPLE_CACHE_OVERRIDE='y' # Включение отменяет время обновления кэша Nginx OCSP сшивки 3600 секунд
-NGINX_STAPLE_CACHE_TTL='86400'  # Время обновления кэша Nginx OCSP сшивки в секундах override default 3600
+NGINX_STAPLE_CACHE_OVERRIDE='n' # Enable will override Nginx OCSP stapling cache refresh time of 3600 seconds
+NGINX_STAPLE_CACHE_TTL='86400'  # Nginx OCSP stapling cache refresh time in seconds override default 3600
 NGINXCPU_AUTOTUNE_NEW='y'    # revised nginx worker_proccess auto tuned settings for >12 cpu thread based servers
-ZSTD_LOGROTATE_NGINX='y'     # initial install only for zstd compressed log rotation community.centminmod.com/threads/16371/
+ZSTD_LOGROTATE_NGINX='n'     # initial install only for zstd compressed log rotation community.centminmod.com/threads/16371/
 VHOST_PRESTATICINC='y'       # add pre-staticfiles-local.conf & pre-staticfiles-global.conf include files
 NGINX_IPV='n'                #NGINX IPV6 compile support for unattended mode only
-AUTOTUNE_CLIENTMAXBODY='y'      # автоматическая настройка параметра client_max_body_size в nginx.conf
+AUTOTUNE_CLIENTMAXBODY='y'   # auto tune client_max_body_size option in nginx.conf
 AUTOHARDTUNE_NGINXBACKLOG='y' # on non-openvz systems, if enabled will override nginx default NGX_LISTEN_BACKLOG in src/os/unix/ngx_linux_config.h
 USE_NGINXMAINEXTLOGFORMAT='n' # use default combined nginx log format instead of main_ext custom format for nginx amplify
-NGINX_ALLOWOVERRIDE='y'         # разрешить моду centmin обновлять настройки nginx.conf по умолчанию, когда эти настройки пересматриваются
-NGINX_SSLCACHE_ALLOWOVERRIDE='y'     # Включаем динамическую настройку nginx ssl_session_cache в /usr/local/nginx/conf/ssl_include.conf на основе обнаруженной системой памяти
+NGINX_ALLOWOVERRIDE='y'      # allow centmin mod to update nginx.conf setting defaults when the defaults are revised
+NGINX_SSLCACHE_ALLOWOVERRIDE='n' # dynamically tune nginx ssl_session_cache in /usr/local/nginx/conf/ssl_include.conf based on system detected memory
 NGINXUPGRADESLEEP='3'
 SWITCH_NGINX_SYSTEMD='y'     # Switch to centos 7 systemd nginx service file
 NSD_INSTALL='y'              # Install NSD (DNS Server)
@@ -153,15 +143,12 @@ NGINX_KTLS='n'               # Enable Nginx kTLS - TLS in Kernel support if Open
 NGINX_HTTPPUSH='n'           # Nginx http/2 push patch https://community.centminmod.com/threads/11910/
 NGINX_ZLIBNG='n'             # 64bit OS only for Nginx compiled against zlib-ng https://github.com/Dead2/zlib-ng
 NGINX_TLS_FINGERPRINT='n'    # JA3 fingerprint module https://github.com/centminmod/nginx-ssl-fingerprint
-NGINX_MODSECURITY='y'        # modsecurity module support https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#Installation_for_NGINX
+NGINX_MODSECURITY='n'        # modsecurity module support https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#Installation_for_NGINX
 NGINX_MODSECURITY_JSONLOGS='n' # enable to switch to JSON log format, to switch back manually edit /usr/local/nginx/modsec/modsecurity.conf
 NGINX_MODSECURITY_MAXMIND='y' # modsecurity built with libmaxminddb is failing to compile so disable it in favour of GeoIP legacy
 NGINX_REALIP='y'             # http://nginx.org/en/docs/http/ngx_http_realip_module.html
 NGINX_RDNS='n'               # https://github.com/flant/nginx-http-rdns
-#
-# Countless Servers Are Vulnerable to Apache Log4j Zero-Day Exploit (Log4Shell)
-# https://community.centminmod.com/threads/countless-servers-are-vulnerable-to-apache-log4j-zero-day-exploit-log4shell.22254/page-4#post-91062
-NGINX_NJS='y'                # nginScript https://www.nginx.com/blog/launching-nginscript-and-looking-ahead/
+NGINX_NJS='n'                # nginScript https://www.nginx.com/blog/launching-nginscript-and-looking-ahead/
 NGINX_GEOIP='y'              # Nginx GEOIP module install
 NGINX_GEOIPMEM='y'           # Nginx caches GEOIP databases in memory (default), setting 'n' caches to disk instead
 NGINX_GEOIPTWOLITE='n'       # https://github.com/leev/ngx_http_geoip2_module
@@ -194,7 +181,7 @@ NGINX_SECURELINK='y'         # http://nginx.org/en/docs/http/ngx_http_secure_lin
 NGINX_FANCYINDEX='y'         # http://wiki.nginx.org/NgxFancyIndex
 NGINX_FANCYINDEXVER='0.4.2'  # https://github.com/aperezdc/ngx-fancyindex/releases
 NGINX_VHOSTSTATS='n'         # https://github.com/vozlt/nginx-module-vts
-NGINX_LIBBROTLI='y'          # https://github.com/eustas/ngx_brotli
+NGINX_LIBBROTLI='n'          # https://github.com/eustas/ngx_brotli
 NGINX_LIBBROTLISTATIC='n'    # only enable if you want pre-compress brotli support and on the fly brotli disabled
 NGINX_BROTLIDEP_UPDATE='n'   # experimental manual update of Google Brotli dependency in ngx_brotli
 NGINX_PAGESPEED='n'          # Install ngx_pagespeed
@@ -268,14 +255,14 @@ LUACJSONVER='2.1.0.8rc1'              # https://github.com/openresty/lua-cjson
 STRIPPHP='y'                 # set 'y' to strip PHP binary to reduce size
 PHP_INSTALL='y'              # Install PHP /w Fast Process Manager
 SWITCH_PHPFPM_SYSTEMD='n'    # Switch to centos 7 systemd php-fpm service file https://community.centminmod.com/threads/16511/
-ZSTD_LOGROTATE_PHPFPM='y'    # initial install only for zstd compressed log rotation community.centminmod.com/threads/16371/
+ZSTD_LOGROTATE_PHPFPM='n'    # initial install only for zstd compressed log rotation community.centminmod.com/threads/16371/
 PHP_PATCH='y'                # Apply PHP patches if they exist
 PHP_MYSQLND_PATCH_FIX='y'    # Apply PHP 7.3 backported mysqlnd patch for MariaDB for PHP <=7.2 https://community.centminmod.com/posts/86953/
-PHP_TUNING='y'              # первоначальная установка php-fpm автоматическая настройка
+PHP_TUNING='n'               # initial php-fpm install auto tuning
 PHP_HUGEPAGES='n'            # Enable explicit huge pages support for PHP 7 on CentOS 7.x systems
 PHP_CUSTOMSSL='n'            # compile php-fpm against openssl 1.0.2+ or libressl 2.3+ whichever nginx uses
 PHPMAKETEST='n'              # set to y to enable make test after PHP make for diagnostic purposes
-AUTODETECPHP_OVERRIDE='y'       # Включаем обновление PHP при котором всегда будет переустанавливать все расширения php, даже если версия php незначительная
+AUTODETECPHP_OVERRIDE='n'    # when enabled, php updates will always reinstall all php extensions even if minor php version
 PHP_PCREJIT_STACKSIZE_ADJUST='n' # when enabled, allows you to raise PHP's default PCRE JIT stack size https://github.com/php/php-src/pull/2910
 PHP_PCREJIT_STACKSIZE='512'  # value to raise PHP PCRE JIT stack size when PHP_PCREJIT_STACKSIZE_ADJUST='y' set on centmin.sh menu option 5 runs
 
@@ -283,7 +270,7 @@ PHPGEOIP_ALWAYS='y'          # GeoIP php extension is always reinstalled on php 
 PHPIMAGICK_ALWAYS='y'        # imagick php extension is always reinstalled on php recompiles
 PHPDEBUGMODE='n'             # --enable-debug PHP compile flag
 PHPIMAP='y'                  # Disable or Enable PHP Imap extension
-PHPFINFO='y'                 # Disable or Enable PHP File Info extension
+PHPFINFO='n'                 # Disable or Enable PHP File Info extension
 PHPFINFO_STANDALONE='n'      # Disable or Enable PHP File Info extension as standalone module
 PHPPCNTL='y'                 # Disable or Enable PHP Process Control extension
 PHPINTL='y'                  # Disable or Enable PHP intl extension
@@ -313,16 +300,14 @@ REDIS_SERVER_INSTALL='y'      # Install redis server by default on initial insta
 ##################################
 ## Nginx SSL options
 
-# управляющие переменные после создания хоста
-# является ли включаемый файл cloudflare.conf незакомментированным (включено) или закомментированным (отключено).
-VHOSTCTRL_CLOUDFLAREINC='y'     # при создании vhost включаем файл cloudflare.conf
+# control variables post vhost creation
+# whether cloudflare.conf include file is uncommented (enabled) or commented out (disabled)
+VHOSTCTRL_CLOUDFLAREINC='n'
 # whether autoprotect-$vhostname.conf include file is uncommented (enabled) or commented out (disabled)
-VHOSTCTRL_AUTOPROTECTINC='y'    # при создании vhost включаем файл autoprotect-vhostname.conf
+VHOSTCTRL_AUTOPROTECTINC='y'
 
 # OpenSSL
 NGINX_PRIORITIZECHACHA='n' # https://community.centminmod.com/posts/67042/
-# remove TLSv1.0 and TLSv1.1 and leave only TLSv1.2 or TLSv1.2 + TLSv1.3 (when using OpenSSL 1.1.1 or BoringsSSL)
-# https://community.centminmod.com/threads/add-ssl_protocol_modern-variable-in-123-09beta01.19715/
 SSL_PROTOCOL_MODERN='y'         # switch Nginx HTTPS to disabel TLSv1.0 & TLSv1.1 by default and support TLSv1.2 minimum
 DISABLE_TLSONEZERO_PROTOCOL='n' # disable TLS 1.0 protocol by default industry is moving to deprecate for security
 NOSOURCEOPENSSL='y'        # set to 'y' to disable OpenSSL source compile for system default YUM package setup
@@ -333,7 +318,7 @@ OPENSSL_THREADS='y'        # control whether openssl 1.1 branch uses threading o
 OPENSSL_TLSONETHREE='y'    # whether OpenSSL 1.1.1 builds enable TLSv1.3
 OPENSSL_CUSTOMPATH='/opt/openssl'  # custom directory path for OpenSSL 1.0.2+
 CLOUDFLARE_PATCHSSL='n'    # set 'y' to implement Cloudflare's chacha20 patch https://github.com/cloudflare/sslconfig
-CLOUDFLARE_ZLIB='y'             # используйте оптимизированный для Cloudflare форк zlib https://blog.cloudflare.com/cloudflare-fights-cancer/
+CLOUDFLARE_ZLIB='n'        # use Cloudflare optimised zlib fork https://blog.cloudflare.com/cloudflare-fights-cancer/
 CLOUDFLARE_ZLIB_DYNAMIC='y' # compile nginx CF zlib as a dynamically instead of statically
 CLOUDFLARE_ZLIB_OPENSSL='n' # compile dynamically custom OpenSSL against Cloudflare zlib library
 CLOUDFLARE_ZLIBRESET='y'   # if CLOUDFLARE_ZLIB='n' set, then revert gzip compression level from 9 to 5 automatically
@@ -341,19 +326,14 @@ CLOUDFLARE_ZLIBRAUTOMAX='n' # don't auto raise nginx gzip compression level to 9
 CLOUDFLARE_ZLIBPHP='n'     # use Cloudflare optimised zlib fork for PHP-FPM zlib instead of system zlib
 CLOUDFLARE_ZLIBDEBUG='n'   # make install debug verbose mode
 CLOUDFLARE_ZLIBVER='1.3.0'
-NGINX_DYNAMICTLS='y'            # Включаем перекомпилирование nginx https://blog.cloudflare.com/optimizing-tls-over-tcp-to-reduce-latency/
+NGINX_DYNAMICTLS='n'          # set 'y' and recompile nginx https://blog.cloudflare.com/optimizing-tls-over-tcp-to-reduce-latency/
 OPENSSLECDSA_PATCH='n'        # https://community.centminmod.com/posts/57725/
 OPENSSLECDHX_PATCH='n'        # https://community.centminmod.com/posts/57726/
 OPENSSLEQUALCIPHER_PATCH='n'  # https://community.centminmod.com/posts/57916/
 PRIORITIZE_CHACHA_OPENSSL='n' # https://community.centminmod.com/threads/15708/
 
-# https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
-NGINX_HPACK='y'             # Отключаем флаг (-flag) оптимизаци для Nginx
-GCC_FALIGN_FUNCTION='y'     # Устанавливаем set -falign-functions=32 for GCC compiles of Nginx and PHP-FPM and pigz
-
-
 # LibreSSL
-LIBRESSL_SWITCH='n'         # если 'y', то отключаем OpenSSL опцию статической компиляции по умолчанию для сервера Nginx
+LIBRESSL_SWITCH='y'        # if set to 'y' it overrides OpenSSL as the default static compiled option for Nginx server
 LIBRESSL_VERSION='3.0.2'   # Use this version of LibreSSL http://www.libressl.org/
 
 # BoringSSL
@@ -378,13 +358,6 @@ IMAGICKPHP_VER='3.4.4'         # PHP extension for imagick
 IMAGICKPHP_SEVEN_VER='3.7.0'   # PHP extension for imagick
 MAILPARSEPHP_VER='2.1.6'      # https://pecl.php.net/package/mailparse
 MAILPARSEPHP_COMPATVER='3.1.2' # For PHP 7
-###############################################################
-# When set to ='y'will disable those listed installed services
-# by default. The service is still installed but disabled
-# by default and can be re-enabled with commands:
-# service servicename start; chkconfig servicename on
-# From https://centminmod.com/faq.html Question #25
-###############################################################
 MEMCACHED_INSTALL='y'         # Install Memcached
 LIBEVENT_VERSION='2.1.8'      # Use this version of Libevent
 MEMCACHED_VERSION='1.6.5'    # Use this version of Memcached server
@@ -418,10 +391,10 @@ PHP_MCRYPTPECL='y'          # PHP 7.2 deprecated mcrypt support so this adds it 
 PHP_MCRYPTPECLVER='1.0.4'   # https://pecl.php.net/package/mcrypt
 PHPZOPFLI='n'               # enable zopfli php extension https://github.com/kjdev/php-ext-zopfli
 PHPZOPFLI_ALWAYS='n'        # zopfli php extension always install on php recompiles
-PHP_BROTLI='y'              # brotli php extension https://github.com/kjdev/php-ext-brotli
-PHP_LZFOUR='y'              # lz4 php extension https://github.com/kjdev/php-ext-lz4
-PHP_LZF='y'                 # lzf php extension https://github.com/php/pecl-file_formats-lzf php-ext-lzf
-PHP_ZSTD='y'                # zstd php extension https://github.com/kjdev/php-ext-zstd
+PHP_BROTLI='n'              # brotli php extension https://github.com/kjdev/php-ext-brotli
+PHP_LZFOUR='n'              # lz4 php extension https://github.com/kjdev/php-ext-lz4
+PHP_LZF='n'                 # lzf php extension https://github.com/php/pecl-file_formats-lzf php-ext-lzf
+PHP_ZSTD='n'                # zstd php extension https://github.com/kjdev/php-ext-zstd
 
 PHP_FTPEXT='y'              # ftp PHP extension
 PHP_MEMCACHE='y'            # memcache PHP extension 
@@ -443,13 +416,13 @@ ZOPCACHE_OVERRIDE='n'           # ='y'ill override PHP 5.5, 5.6, 7.0 inbuilt Zen
 PYTHON_VERSION='2.7.10'     # Use this version of Python
 SIEGE_VERSION='4.0.4'
 
-# включить с помощью CUSTOM_CURLRPM='y'
-# используйте на свой страх и риск, так как это может сломать систему
-# информация на https://mirror.city-fan.org/ftp/contrib/sysutils/Mirroring/
-CUSTOM_CURLRPM='y'
-CUSTOM_CURLRPMVER='7.83.1'       # custom curl/libcurl version
-# CUSTOM_CURLLIBSSHVER='1.6.0-4.0'     # libssh2 version
-# CUSTOM_CURLRPMCARESVER='1.10.0-6.0'  # c-ares version
+# custom curl/libcurl RPM for 7.44 and higher
+# enable with CUSTOM_CURLRPM='y' use at own risk as it can break the system
+# info at http://mirror.city-fan.org/ftp/contrib/sysutils/Mirroring/
+CUSTOM_CURLRPM='n'
+CUSTOM_CURLRPMVER='7.47.1-2.0'       # custom curl/libcurl version
+CUSTOM_CURLLIBSSHVER='1.6.0-4.0'     # libssh2 version
+CUSTOM_CURLRPMCARESVER='1.10.0-6.0'  # c-ares version
 CUSTOM_CURLRPMSYSURL='http://mirror.city-fan.org/ftp/contrib/sysutils/Mirroring'
 CUSTOM_CURLRPMLIBURL='http://mirror.city-fan.org/ftp/contrib/libraries'
 
@@ -460,8 +433,8 @@ SELFSIGNEDSSL_O=''
 SELFSIGNEDSSL_OU=''
 ###############################################################
 # centmin.sh menu option 22 specific options
-WPPLUGINS_ALL='n'               # не устанавливать дополнительные плагины к WP
-WPCLI_CE_QUERYSTRING_INCLUDED='y' # https://community.centminmod.com/posts/85893/
+WPPLUGINS_ALL='n'           # do not install additional plugins
+WPCLI_CE_QUERYSTRING_INCLUDED='n' # https://community.centminmod.com/posts/85893/
 WPCLI_SUPERCACHEPLUGIN='n'  # https://community.centminmod.com/threads/5102/
 # choose Cache Enabler 1.4.9 cache query string inclusion set to 'y'
 # choose Cache Enabler 1.5.1 cache query string exclusion set to 'n'
@@ -474,9 +447,8 @@ PHP_MYSQLSOCKPATH='/var/lib/mysql'
 # in centmin.sh menu option 2, 22, and /usr/bin/nv nginx vhost
 # generators. You can control whether or not to enable or disable
 # integration detection in these menu options
-LETSENCRYPT_DETECT='y'      # Включаем интеграцию addons/acmetool.sh
+LETSENCRYPT_DETECT='n'
 ###############################################################
-DUALCERTS='y'               # Включаем поддержку двойного сертификата на домен
 
 # When set to ='y'will disable those listed installed services
 # by default. The service is still installed but disabled
@@ -512,8 +484,7 @@ PORTFLOOD_INTERVAL=300
 # MariaDB overrides
 MARIADB_INSTALLTENTWO='n'   # MariaDB 10.2 YUM default install if set to yes
 MARIADB_INSTALLTENTHREE='n' # MariaDB 10.3 YUM default install if set to yes
-MARIADB_INSTALLTENFOUR='y'          # Установка MariaDB 10.4 YUM по умолчанию, если установлено значение yes
-SET_DEFAULT_MYSQLCHARSET='utf8mb4'  # Установка по умолчанию кодировки для MariaDB
+MARIADB_INSTALLTENFOUR='n'  # MariaDB 10.4 YUM default install if set to yes
 ###############################################################
 # centmin.sh menu trigger settings
 SKIP_INITIAL_PIP_UPDATES='n'
@@ -524,23 +495,3 @@ SKIP_CSF_MAXMIND_REGO='n'
 SKIP_CHECKIPVSIX='n'
 SKIP_LIBC_FIX='n'
 ###############################################################
-
-##For Linux Kernel  > 5.1.x
-NGINX_IOURING_PATCH_BETA='y'    # включение функциональности потоков aio, только если обновлено ядро до 5.1+
-#####################################################
-# WordPress
-WP_FASTCGI_CACHE='y'
-###############################################################
-# Maxmind GeoLite2 database API Key
-# https://community.centminmod.com/posts/80656/
-# You can override this API key with your own Maxmind
-# account API key by setting MM_LICENSE_KEY variable
-# in persistent config file /etc/centminmod/custom_config.inc
-# - Add MM_CSF_SRC='y' default variable to force CSF Firewall to use CC_SRC = "1"
-# for maxmind geolite2 database source instead of db-ip database.
-# Related to https://community.centminmod.com/threads/update-csf-firewall-maxmind-geolite2-routine-in-123-09beta01.19046/
-# - If you want to set CC_SRC = "2" to use db-ip database in CSF Firewall /etc/csf/csf.conf,
-# just set MM_CSF_SRC='n' no persistent config file /etc/centminmod/custom_config.inc and run and exit centmin.sh once
-# - Add a check so that if CC_SRC = "1" already set, no need to run routine.
-MM_LICENSE_KEY='hLYUAcgJtgBg0TZ0'
-MM_CSF_SRC='y'

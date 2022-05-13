@@ -3,6 +3,9 @@
 timedatectl set-timezone Europe/Moscow
 # Установка дополнительных приложений и утилит
 yum -y install nano yum-utils
+# Если выдается ошибка
+# Error unpacking rpm package initscripts-9.49.53-1.el7_9.1.x86_64
+chattr -Vi /usr/lib/udev/rules.d/60-net.rules
 yum -y upgrade
 # create initial persistent config file to override centmin.sh defaults
 # https://centminmod.com/upgrade.html#persistent
