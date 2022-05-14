@@ -2,9 +2,6 @@
 ## THe original one
 ## https://github.com/centminmod/centminmod/blob/master/centmin.sh
 
-EMAIL='x2600@mail.ru'           # Адрес электронной почты для уведомления сервера введите только 1 адрес
-PUSHOVER_EMAIL='quwtcqcy5y@pomail.net'
-
 VHOSTCTRL_CLOUDFLAREINC='y'     # при создании vhost включаем файл cloudflare.conf
 VHOSTCTRL_AUTOPROTECTINC='y'    # при создании vhost включаем файл autoprotect-vhostname.conf
 CLOUDFLARE_ZLIB='y'             # используйте оптимизированный для Cloudflare форк zlib https://blog.cloudflare.com/cloudflare-fights-cancer/
@@ -25,7 +22,7 @@ NGINX_IOURING_PATCH_BETA='y'    # включение функционально�
 
 ##  Обновление NGINX. Отключить, если пользовательские конфигурации
 NGINX_ALLOWOVERRIDE='y'         # разрешить моду centmin обновлять настройки nginx.conf по умолчанию, когда эти настройки пересматриваются
-
+NGINXCPU_AUTOTUNE_NEW='y'
 NGINX_DYNAMICTLS='y'            # Включаем перекомпилирование nginx https://blog.cloudflare.com/optimizing-tls-over-tcp-to-reduce-latency/
 NGINX_SSLCACHE_ALLOWOVERRIDE='y'     # Включаем динамическую настройку nginx ssl_session_cache в /usr/local/nginx/conf/ssl_include.conf на основе обнаруженной системой памяти
 
@@ -55,11 +52,6 @@ LIBRESSL_SWITCH='n'         # если 'y', то отключаем OpenSSL оп
 PARALLEL_MODE='y'
 # связанные с компилятором
 CLANG='n'                   # Nginx and LibreSSL
-DEVTOOLSETSIX='n'           # Отключаем devtoolset-6 GCC 6.2
-DEVTOOLSETSEVEN='n'         # Отключаем devtoolset-7 GCC 7.1
-DEVTOOLSETEIGHT='n'         # Отключаем devtoolset-8 GCC 8.1
-DEVTOOLSETNINE='n'          # Включаем devtoolset-9 GCC 9.1
-DEVTOOLSETTEN='n'           # Включаем devtoolset-10 GCC 10
 DEVTOOLSETELEVEN='y'        # Включаем devtoolset-11 GCC 11
 NGINX_DEVTOOLSETGCC='y'     # Используйте последнюю версию devtoolset даже для компиляции nginx в CentOS 7
 GENERAL_DEVTOOLSETGCC='y'   # Используйте последний devtoolset везде, где это возможно
@@ -76,7 +68,7 @@ MARCH_TARGETNATIVE_ALWAYS='y'   # force native compiler to override smarter vps 
 # используйте на свой страх и риск, так как это может сломать систему
 # информация на https://mirror.city-fan.org/ftp/contrib/sysutils/Mirroring/
 CUSTOM_CURLRPM='y'
-CUSTOM_CURLRPMVER='7.81.0'       # пользовательская версия curl/libcurl
+CUSTOM_CURLRPMVER='7.83.1'       # пользовательская версия curl/libcurl
 
 
 
@@ -139,15 +131,16 @@ CACHE_ENABLER_LEGACY_CACHE='y'
 # - If you want to set CC_SRC = "2" to use db-ip database in CSF Firewall /etc/csf/csf.conf,
 # just set MM_CSF_SRC='n' no persistent config file /etc/centminmod/custom_config.inc and run and exit centmin.sh once
 # - Add a check so that if CC_SRC = "1" already set, no need to run routine.
-MM_LICENSE_KEY='hLYUAcgJtgBg0TZ0'
-MM_CSF_SRC='y'
+# MM_LICENSE_KEY='hLYUAcgJtgBg0TZ0'
+# MM_CSF_SRC='y'
+
 ###############################################################
 # When set to ='y'will disable those listed installed services
 # by default. The service is still installed but disabled
 # by default and can be re-enabled with commands:
 # service servicename start; chkconfig servicename on
 # From https://centminmod.com/faq.html Question #25
-MEMCACHED_INSTALL='y'         # Install Memcached
-MEMCACHED_DISABLED='n'        # when set to ='y' Memcached server disabled by default via chkconfig off
-NSD_INSTALL='y'
-NSD_DISABLED='n'              # when set to ='y'NSD disabled by default with chkconfig off
+# MEMCACHED_INSTALL='y'         # Install Memcached
+# MEMCACHED_DISABLED='n'        # when set to ='y' Memcached server disabled by default via chkconfig off
+# NSD_INSTALL='y'
+# NSD_DISABLED='n'              # when set to ='y'NSD disabled by default with chkconfig off
