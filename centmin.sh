@@ -1,8 +1,6 @@
 #!/bin/bash
 # Установка часового пояса
 timedatectl set-timezone Europe/Moscow
-# Установка дополнительных приложений и утилит
-yum -y install nano yum-utils
 # Если выдается ошибка
 # Error unpacking rpm package initscripts-9.49.53-1.el7_9.1.x86_64
 chattr -Vi /usr/lib/udev/rules.d/60-net.rules
@@ -14,7 +12,8 @@ wget https://raw.githubusercontent.com/sanikovich/centminmod/main/custom_config.
 
 # For latest 130.00beta01 install
 # PHP 8.1.x default beta installer.
-yum -y update; curl -O https://centminmod.com/betainstaller81.sh && chmod 0700 betainstaller81.sh && bash betainstaller81.sh
+# yum -y update; curl -O https://centminmod.com/betainstaller81.sh && chmod 0700 betainstaller81.sh && bash betainstaller81.sh
+yum -y update; curl -O https://centminmod.com/betainstaller.sh && chmod 0700 betainstaller.sh && bash betainstaller.sh
 
 # pre-create Nginx HTTPS site’s dhparam file before hand to speed up subsequent Nginx vhost creation routines. On slow systems, this command will take a few minutes to complete.
 openssl dhparam -out /usr/local/nginx/conf/ssl/dhparam.pem 2048
@@ -52,8 +51,8 @@ yum update -y --enablerepo=city-fan.org --disableplugin=priorities
 package-cleanup -y --oldkernels --count=1
 
 # 
-wget -4 https://github.com/tippexs/nginx-njs-waf-cve2021-44228/raw/main/cve.js -O /usr/local/nginx/conf/cve.js
-js_import cve from /usr/local/nginx/conf/cve.js;
-js_set $isJNDI cve.inspect;
+# wget -4 https://github.com/tippexs/nginx-njs-waf-cve2021-44228/raw/main/cve.js -O /usr/local/nginx/conf/cve.js
+# js_import cve from /usr/local/nginx/conf/cve.js;
+# js_set $isJNDI cve.inspect;
 
-echo "Done!"
+echo "<<< ГОТОВО >>>"
