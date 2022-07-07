@@ -110,7 +110,7 @@ NGINX_STAPLE_CACHE_TTL='86400'  # Время обновления кэша Nginx
 # https://community.centminmod.com/threads/countless-servers-are-vulnerable-to-apache-log4j-zero-day-exploit-log4shell.22254/page-4#post-91062
 NGINX_NJS='y'                # nginScript https://www.nginx.com/blog/launching-nginscript-and-looking-ahead/
 NGXDYNAMIC_NJS='y'
-
+NGINX_ONETWOTHREE_COMPAT='y'  # Для установки nginx 1.23.0 указываем Y
 ###############################################################
 # centmin.sh menu option 22 specific options
 WPPLUGINS_ALL='n'               # не устанавливать дополнительные плагины к WP
