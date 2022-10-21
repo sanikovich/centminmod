@@ -13,7 +13,7 @@ DISABLE_IPVSIX='y'              # отключить поддержку IPv6 в 
 AUTOTUNE_CLIENTMAXBODY='y'      # автоматическая настройка параметра client_max_body_size в nginx.conf
 
 ## FOR PHP 7.4+
-FPM_WAKEUP_PATCH='y'            # Включаем патч для пробуждения событий PHP-FPM
+#FPM_WAKEUP_PATCH='y'            # Включаем патч для пробуждения событий PHP-FPM
 
 AUTODETECPHP_OVERRIDE='y'       # Включаем обновление PHP при котором всегда будет переустанавливать все расширения php, даже если версия php незначительная
 
@@ -33,7 +33,10 @@ NGXDYNAMIC_BROTLI='y'
 NGINX_LIBBROTLI='y'
 AUTOHARDTUNE_NGINXBACKLOG='y'
 
-MARIADB_INSTALLTENFOUR='y'          # Установка MariaDB 10.4 YUM по умолчанию, если установлено значение yes
+MARIADB_INSTALLTENTHREE='n'
+MARIADB_INSTALLTENFOUR='n'
+MARIADB_INSTALLTENFIVE='n'
+MARIADB_INSTALLTENSIX='y'          # Установка MariaDB 10.4 YUM по умолчанию, если установлено значение yes
 SET_DEFAULT_MYSQLCHARSET='utf8mb4'  # Установка по умолчанию кодировки для MariaDB
 
 LETSENCRYPT_DETECT='y'      # Включаем интеграцию addons/acmetool.sh
@@ -68,7 +71,7 @@ MARCH_TARGETNATIVE_ALWAYS='y'   # force native compiler to override smarter vps 
 # используйте на свой страх и риск, так как это может сломать систему
 # информация на https://mirror.city-fan.org/ftp/contrib/sysutils/Mirroring/
 CUSTOM_CURLRPM='y'
-CUSTOM_CURLRPMVER='7.83.1'       # пользовательская версия curl/libcurl
+CUSTOM_CURLRPMVER='7.85.0'       # пользовательская версия curl/libcurl
 
 
 
@@ -76,7 +79,6 @@ CUSTOM_CURLRPMVER='7.83.1'       # пользовательская версия
 #PHPPGO_INDEXPATH_TWO='/home/nginx/domains/XX/public/index.php'
 
 PHP_TUNING='y'              # первоначальная установка php-fpm автоматическая настройка
-
 PHP_BROTLI='y'              # brotli php extension https://github.com/kjdev/php-ext-brotli
 PHP_LZFOUR='y'              # lz4 php extension https://github.com/kjdev/php-ext-lz4
 PHP_LZF='y'                 # lzf php extension https://github.com/php/pecl-file_formats-lzf php-ext-lzf
@@ -104,7 +106,7 @@ SSL_PROTOCOL_MODERN='y' #
 NGINX_MODSECURITY='y'          # modsecurity module support https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#Installation_for_NGINX
 
 
-NGINX_STAPLE_CACHE_OVERRIDE='y' # Включение отменяет время обновления кэша Nginx OCSP сшивки 3600 секунд
+NGINX_STAPLE_CACHE_OVERRIDE='n' # Включение отменяет время обновления кэша Nginx OCSP сшивки 3600 секунд
 NGINX_STAPLE_CACHE_TTL='86400'  # Время обновления кэша Nginx OCSP сшивки в секундах override default 3600
 # Countless Servers Are Vulnerable to Apache Log4j Zero-Day Exploit (Log4Shell) 
 # https://community.centminmod.com/threads/countless-servers-are-vulnerable-to-apache-log4j-zero-day-exploit-log4shell.22254/page-4#post-91062
@@ -119,6 +121,9 @@ WPCLI_SUPERCACHEPLUGIN='n'  # https://community.centminmod.com/threads/5102/
 # choose Cache Enabler 1.4.9 cache query string inclusion set to 'y'
 # choose Cache Enabler 1.5.1 cache query string exclusion set to 'n'
 CACHE_ENABLER_LEGACY_CACHE='y'
+
+# TCP_BBR_ENABLE='y'
+#  add optional tcp_bbr_setup function for el8+ in 130.00beta01
 ###############################################################
 # Maxmind GeoLite2 database API Key
 # https://community.centminmod.com/posts/80656/
