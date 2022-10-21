@@ -1,7 +1,7 @@
 # Modified CENTMIN MOD LEMP WEB STACK by George Liu (eva2000).
 ---
 
-## Step 1. Upgrade Centos 7 Kernel to ELRepo Kernel-ml 5.x
+## Step 1. Upgrade Centos 7 Kernel to ELRepo Kernel-ml 6.x
 ```
 yum -y install wget yum-utils nano; yum -y upgrade; wget https://raw.githubusercontent.com/sanikovich/centminmod/main/kernel5.sh; chmod +x kernel5.sh; ./kernel5.sh
 ```
