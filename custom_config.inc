@@ -29,6 +29,7 @@ NGINX_SSLCACHE_ALLOWOVERRIDE='y'     # Включаем динамическую
 # автоматическое включение модуля brotli nginx при наличии Intel Skylake или более новых процессоров
 # более новые процессоры позволяют быстрее обслуживать сжатые файлы nginx с помощью brotli
 # https://community.centminmod.com/posts/70527/
+NGINX_BROTLIDEP_UPDATE='y'
 NGXDYNAMIC_BROTLI='y'
 NGINX_LIBBROTLI='y'
 AUTOHARDTUNE_NGINXBACKLOG='y'
@@ -55,7 +56,9 @@ LIBRESSL_SWITCH='n'         # если 'y', то отключаем OpenSSL оп
 PARALLEL_MODE='y'
 # связанные с компилятором
 CLANG='n'                   # Nginx and LibreSSL
-DEVTOOLSETELEVEN='y'        # Включаем devtoolset-11 GCC 11
+DEVTOOLSETTEN='n'           # Включаем devtoolset-10 GCC 10
+DEVTOOLSETELEVEN='n'        # Включаем devtoolset-11 GCC 11
+DEVTOOLSETTWELVE='y'        # Включаем devtoolset-12 GCC 12
 NGINX_DEVTOOLSETGCC='y'     # Используйте последнюю версию devtoolset даже для компиляции nginx в CentOS 7
 GENERAL_DEVTOOLSETGCC='y'   # Используйте последний devtoolset везде, где это возможно
 CRYPTO_DEVTOOLSETGCC='y'    # Используйте последний devtoolset для компиляции libressl или openssl
@@ -89,8 +92,9 @@ ZSTD_LOGROTATE_NGINX='y'    # initial install only for zstd compressed log rotat
 ZSTD_LOGROTATE_PHPFPM='y'   # initial install only for zstd compressed log rotation community.centminmod.com/threads/16371/
 
 
-PHPFINFO='y'                # Disable or Enable PHP File Info extension
+PHPINFO='y'                # Disable or Enable PHP File Info extension
 WP_FASTCGI_CACHE='y'
+PHP_MEMCACHE='n'
 
 # set = y to put nginx, php and mariadb major version updates into 503
 # maintenance mode https://community.centminmod.com/posts/26485/
