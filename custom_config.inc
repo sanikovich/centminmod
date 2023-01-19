@@ -2,6 +2,7 @@
 ## THe original one
 ## https://github.com/centminmod/centminmod/blob/master/centmin.sh
 
+DISKALERTEXCLUDE_LIST='snapd'
 VHOSTCTRL_CLOUDFLAREINC='y'     # при создании vhost включаем файл cloudflare.conf
 VHOSTCTRL_AUTOPROTECTINC='y'    # при создании vhost включаем файл autoprotect-vhostname.conf
 CLOUDFLARE_ZLIB='y'             # используйте оптимизированный для Cloudflare форк zlib https://blog.cloudflare.com/cloudflare-fights-cancer/
