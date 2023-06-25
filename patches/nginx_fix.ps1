@@ -12,7 +12,7 @@
   Version : 0.0.1 -
 
 #>
-[regex]$varFind = "([^\S\r\n])*listen 443 ssl http2;"
+[regex]$varFind = "([^\S\r\n])*listen 443 ssl http2.*"
 $varReplace = @"
   listen 443 ssl;
   http2 on;
