@@ -1,7 +1,7 @@
 # Powershell Patches for CentminMOD
 ---
 
-## 1. Nginx 1.25.1 Release - [http2 parameter deprecation](https://community.centminmod.com/threads/nginx-1-25-1-release-http2-parameter-deprecation.23890/
+## 1. Nginx 1.25.1 Release - [http2 parameter deprecation](https://community.centminmod.com/threads/nginx-1-25-1-release-http2-parameter-deprecation.23890/)
 
 
 ```
